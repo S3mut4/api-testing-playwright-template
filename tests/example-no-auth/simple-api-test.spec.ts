@@ -49,7 +49,7 @@ test('post product with correct mandatory data should receive code 201', async (
     name: 'Orange',
     category: 'Fruit',
     price: 2.39,
-//    quantity: 10,
+    //    quantity: 10,
   }
   // Send a POST request to the server
   const response = await request.post('https://shop.tl-academy.ee/api/products', {
@@ -72,18 +72,19 @@ test('post product with correct mandatory data should receive code 201', async (
   expect(responseBody.quantity).toBe(0)
 })
 
-test('post product with correct mandatory data and quantity should receive code 201', async ({ request }) => {
+test('post product with correct mandatory data and quantity should receive code 201', async ({
+  request,
+}) => {
   // prepare request body
   const requestBody = {
-    name: 'Hola',
+    name: 'Kiwi',
     category: 'Fruit',
     price: 2.39,
     quantity: 25, //Optional field set explicitly
   }
   // Send a POST request to the server
-  const response = await request.get('https://backend.tallinn-learning.ee/products', {
+  const response = await request.post('https://shop.tl-academy.ee/api/products', {
     data: requestBody,
-    ignoreHTTPSErrors: true,
   })
   // parse raw response body to json
   const responseBody = await response.json()
@@ -97,10 +98,7 @@ test('post product with correct mandatory data and quantity should receive code 
   expect(responseBody.available).toBeTruthy()
 })
 
-
-test('post product with missing mandatory name should receive code 400', async ({
-  request,
-}) => {
+test('post product with missing mandatory name should receive code 400', async ({ request }) => {
   // prepare request body
   const requestBody = {
     //name: 'Kiwi',
@@ -111,6 +109,7 @@ test('post product with missing mandatory name should receive code 400', async (
   // Send a POST request to the server
   const response = await request.post('https://shop.tl-academy.ee/api/products', {
     data: requestBody,
+    ignoreHTTPSErrors: true,
   })
   // parse raw response body to json
   //const responseBody = await response.json()
@@ -123,4 +122,3 @@ test('post product with missing mandatory name should receive code 400', async (
   //expect(responseBody.quantity).toBe(25)
   //expect(responseBody.available).toBeTruthy()
 })
-
