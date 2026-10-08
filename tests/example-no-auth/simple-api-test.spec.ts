@@ -77,7 +77,7 @@ test('post product with correct mandatory data and quantity should receive code 
   request,
 }) => {
   // prepare request body
-  const requestBody = new ProductDto('Kiwi','Fruit',2.39,25)
+  const requestBody = new ProductDto('Kiwi', 'Fruit', 2.39, 25)
 
   // Send a POST request to the server
   const response = await request.post('https://shop.tl-academy.ee/api/products', {
@@ -95,9 +95,7 @@ test('post product with correct mandatory data and quantity should receive code 
   expect(responseBody.available).toBeTruthy()
 })
 
-test('failt to create product with empty name, should receive code 400', async ({
-  request,
-}) => {
+test('fail to create product with empty name, should receive code 400', async ({ request }) => {
   // prepare request body
   const requestBody = new ProductDto('Kiwi', '', 0, 25)
 
@@ -113,10 +111,7 @@ test('failt to create product with empty name, should receive code 400', async (
   console.log('response status:', statusCode)
   console.log('response body:', responseBody)
   expect(statusCode).toBe(StatusCodes.BAD_REQUEST)
-
 })
-
-
 
 test('post product with missing mandatory name should receive code 400', async ({ request }) => {
   // prepare request body
