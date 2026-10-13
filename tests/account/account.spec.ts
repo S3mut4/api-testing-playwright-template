@@ -3,13 +3,10 @@ import { StatusCodes } from 'http-status-codes'
 import { AccountDto } from '../dto/account-dto'
 
 test('get account with correct id should response code 200', async ({ request }) => {
-
   // Send a GET request to the server
-  const response = await request.get('https://shop.tl-academy.ee/api/accounts/1',
-    {
-      headers: {'X-API-KEY': 'my-api-key'}
-    }
-  )
+  const response = await request.get('https://shop.tl-academy.ee/api/accounts/1', {
+    headers: { 'X-API-KEY': 'my-api-key' },
+  })
 
   // parse raw response body to json
   const responseBody = await response.json()
@@ -53,5 +50,4 @@ test('create account with correct payload id should response code 201', async ({
   const depositstatusCode = responseDeposit.status()
   console.log('response status:', depositstatusCode)
   console.log('response body:', responseBodyDeposit)
-
 })

@@ -8,7 +8,7 @@ export const loginEndpoint = '/login/student'
 export const ordersEndpoint = '/orders'
 
 // unskip when ready to use
-test.describe.skip('Authorization flow', () => {
+test.describe('Authorization flow', () => {
   test.beforeAll(() => {
     loginDto = new Login(process.env['DL_USERNAME']!, process.env['DL_PASSWORD']!)
   })
@@ -16,12 +16,14 @@ test.describe.skip('Authorization flow', () => {
   test('should login and receive authorization token', async ({ request }) => {
     const token = await fetchJwt(request, loginDto)
     expect(token).toBeDefined()
+    console.log(token)
   })
 
   test('should create order', async ({ request }) => {
     const token = await fetchJwt(request, loginDto)
     const orderId = await createOrder(request, token)
     expect(orderId).toBeDefined()
+    console.log(orderId)
   })
 
   test('should get orders with authorization token', async ({ request }) => {
