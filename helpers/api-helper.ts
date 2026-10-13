@@ -19,7 +19,7 @@ export async function createOrder(request: APIRequestContext, jwt: string): Prom
     data: {
       "status": "OPEN",
       "courierId": 0,
-      "customerName": "vladimir",
+      "customerName": "Dani",
       "customerPhone": "55445566",
       "comment": "hello",
       "id": 0
