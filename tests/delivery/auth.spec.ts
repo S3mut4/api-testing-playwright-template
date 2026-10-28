@@ -1,11 +1,9 @@
 import { expect, test } from '@playwright/test'
 import { Login } from '../../dto/login-dto'
-import { createOrder, fetchJwt, getOrderById } from '../../helpers/api-helper'
+import { createOrder, fetchJwt, getOrderById, baseUrl, ordersEndpoint } from '../../helpers/api-helper'
 
 let loginDto: Login
-export const baseUrl = 'https://backend.tallinn-learning.ee'
-export const loginEndpoint = '/login/student'
-export const ordersEndpoint = '/orders'
+
 
 // unskip when ready to use
 test.describe('Authorization flow', () => {
